@@ -102,6 +102,38 @@ session_start();
   </style>
 </head>
 <body>
+<<<<<<< HEAD
+  <div style="background-color: #1f1f1f; padding: 40px 20px; text-align: center; border-bottom: 1px solid #444; box-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+  <h1 style="color: #F2BFA4; font-size: 3rem; letter-spacing: 2px; margin: 0;">MY BLOG</h1>
+</div>
+  <div style="text-align: center; margin-top: 10px;">
+    <a href="/APEXPLANET/index.php">HOME</a>
+  </div>
+
+  <div class="form-container">
+    <h2>REGISTER</h2>
+    <form action="register.php" method="post">
+      <label>USERNAME:</label>
+    <input type="text" name="username" required
+  pattern="^[a-zA-Z0-9_]+$"
+  title="Only letters, numbers, and underscores allowed. No spaces or special characters."
+>
+<label>PASSWORD:</label>
+      <input type="password" id="password" name="password" required
+         minlength="8"
+         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+         placeholder="At least 8 characters"
+         title="Password must be at least 8 characters long and include uppercase, lowercase, and a number"><br><br>
+
+
+
+      <label>CONFIRM PASSWORD:</label>
+      <input type="password" name="confirmpassword">
+      <div class="submit-wrapper">
+  <input type="submit" name="submit" value="Submit">
+
+</div>
+=======
   <h1>MY BLOG</h1>
   <div style="text-align: center; margin-top: 10px;">
     <a href="index.php">HOME</a>
@@ -122,6 +154,7 @@ session_start();
       <div class="submit-wrapper">
   <input type="submit" name="submit" value="Submit">
 </div>
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
 
     </form>
   </div>
@@ -145,10 +178,20 @@ if (isset($_POST["submit"])) {
 
         mysqli_query($conn,$sql);
         echo '<div class="message">Registered successfully!!!</div>'; 
+<<<<<<< HEAD
+        header("refresh:2; url=/APEXPLANET/loginpage.php");
+=======
         header("refresh:2; url=loginpage.php");
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
         }catch(mysqli_sql_exception){
             echo '<div class="error">Username is Already taken!!!</div>';
         }
     }
 }
 ?>
+<<<<<<< HEAD
+       
+                    
+   
+=======
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053

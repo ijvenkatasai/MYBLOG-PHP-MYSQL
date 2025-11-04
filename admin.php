@@ -102,6 +102,17 @@ session_start();
 
 
 <body>
+<<<<<<< HEAD
+  <div style="background-color: #1f1f1f; padding: 40px 20px; text-align: center; border-bottom: 1px solid #444; box-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+  <h1 style="color: #F2BFA4; font-size: 3rem; letter-spacing: 2px; margin: 0;">MY BLOG</h1>
+</div>
+  <div style="text-align: center; margin-top: 10px;">
+    <a href="/APEXPLANET/index.php">HOME</a>
+  </div>
+
+  <div class="form-container">
+    <h2 style="text-align: center;">ADMIN LOGIN</h2>
+=======
   <h1>MY BLOG</h1>
   <div style="text-align: center; margin-top: 10px;">
     <a href="index.php">HOME</a>
@@ -109,6 +120,7 @@ session_start();
 
   <div class="form-container">
     <h2 style="text-align: center;">LOGIN</h2>
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
     <form action="admin.php" method="post">
   
   <label for="email"><b>E-MAIL:</b></label><br>
@@ -141,7 +153,11 @@ if (isset($_POST["login"])) {
         $_SESSION["username"] = "Admin";
         $_SESSION["role"] = "admin";
         echo '<div class="message">Login successful!</div>';
+<<<<<<< HEAD
+        header("refresh:2; url=/APEXPLANET/adminhome.php");
+=======
         header("refresh:2; url=adminhome.php");
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
         exit();
     } else {
         echo '<div class="error">Access Denied! Invalid Admin Credentials.</div>';

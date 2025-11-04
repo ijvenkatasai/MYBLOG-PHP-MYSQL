@@ -135,7 +135,12 @@ if (isset($_POST["delete"]))  {
     $res = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($res) > 0) {
+<<<<<<< HEAD
+      $user_id = mysqli_real_escape_string($conn, $_SESSION["username"]);
+    $s = "DELETE FROM posts WHERE id = '$post_id' AND user_id LIKE '$userid'";
+=======
     $s = "DELETE FROM posts WHERE id = '$post_id'";
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
     mysqli_query($conn, $s);
     echo '<div class="message">Post Deleted successfully!!!</div>';
     header("refresh:2; url=myblog.php");
