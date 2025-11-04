@@ -1,16 +1,18 @@
 <?php
 include("database.php");
-session_start();
+session_start(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>REGISTER</title>
+    <meta charset="UTF-8">
+    <title>ADMIN LOGIN</title>
+    </head>
   <style>
     body {
       background-color: #2c2c2c;
       color: #e0e0e0;
+ 
       margin: 0;
       padding: 0;
     }
@@ -19,7 +21,7 @@ session_start();
       text-align: center;
       color: #F2BFA4;
       margin-top: 40px;
-      
+      font-size: 3rem;
     }
 
     a {
@@ -45,20 +47,13 @@ session_start();
     h2 {
       color: #F2BFA4;
       margin-bottom: 20px;
-      text-align: center;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
     }
 
     input[type="text"],
     input[type="password"] {
       width: 90%;
       padding: 10px;
-      margin-top: 5px;
+      margin: 10px 0;
       border: none;
       border-radius: 5px;
       background-color: #e0e0e0;
@@ -70,7 +65,6 @@ session_start();
       color: white;
       border: none;
       padding: 10px 20px;
-      margin-top: 20px;
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
@@ -80,19 +74,24 @@ session_start();
     input[type="submit"]:hover {
       background-color: #3a6edc;
       transform: scale(1.05);
-      align-items: center;
+      
     }
-    .submit-wrapper {
+
+    .form-container a {
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .center-wrapper {
   text-align: center;
   margin-top: 20px;
+
 }
-.message {
+.message{
             text-align: center;
             font-weight: bold;
             color: #28a745;
             margin-top: 20px;
         }
-
         .error {
             text-align: center;
             font-weight: bold;
@@ -100,7 +99,8 @@ session_start();
             margin-top: 20px;
         }
   </style>
-</head>
+
+
 <body>
   <div style="background-color: #1f1f1f; padding: 40px 20px; text-align: center; border-bottom: 1px solid #444; box-shadow: 0 2px 10px rgba(0,0,0,0.4);">
   <h1 style="color: #F2BFA4; font-size: 3rem; letter-spacing: 2px; margin: 0;">MY BLOG</h1>
@@ -110,58 +110,43 @@ session_start();
   </div>
 
   <div class="form-container">
-    <h2>REGISTER</h2>
-    <form action="register.php" method="post">
-      <label>USERNAME:</label>
-    <input type="text" name="username" required
-  pattern="^[a-zA-Z0-9_]+$"
-  title="Only letters, numbers, and underscores allowed. No spaces or special characters."
->
-<label>PASSWORD:</label>
-      <input type="password" id="password" name="password" required
-         minlength="8"
-         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-         placeholder="At least 8 characters"
-         title="Password must be at least 8 characters long and include uppercase, lowercase, and a number"><br><br>
-
-
-
-      <label>CONFIRM PASSWORD:</label>
-      <input type="password" name="confirmpassword">
-      <div class="submit-wrapper">
-  <input type="submit" name="submit" value="Submit">
-
+    <h2 style="text-align: center;">ADMIN LOGIN</h2>
+    <form action="admin.php" method="post">
+  
+  <label for="email"><b>E-MAIL:</b></label><br>
+  <input type="email" id="email" name="email" required size="50" style="width: 370px;height: 30px; border-radius: 5px;"><br><br>
+<label><b>PASSWORD:</b></label><br>
+      <input type="password" name="password"><br>
+    <div class="center-wrapper">
+  <input type="submit" name="login" value="Login"><br>
+  
 </div>
-
     </form>
   </div>
+  
 </body>
+
 </html>
 <?php
-if (isset($_POST["submit"])) {
-    if (empty($_POST["username"]) || empty($_POST["password"])) {
-        echo '<div class="error">Enter Username/password !!!</div>';
-    } elseif ($_POST["password"] != $_POST["confirmpassword"]) {
-        echo '<div class="error">Password and confirm password should be same!!!</div>';
+
+
+if (isset($_POST["login"])) {
+    $admin_email = "Apexplanet@gmail.com";
+    $admin_password = "Apex12345";
+
+    $input_email = $_POST["email"] ?? '';
+    $input_password = $_POST["password"] ?? '';
+
+    if (empty($input_email) || empty($input_password)) {
+        echo '<div class="error">Enter Email and Password!</div>';
+    } elseif ($input_email === $admin_email && $input_password === $admin_password) {
+        $_SESSION["username"] = "Admin";
+        $_SESSION["role"] = "admin";
+        echo '<div class="message">Login successful!</div>';
+        header("refresh:2; url=/APEXPLANET/adminhome.php");
+        exit();
     } else {
-        try{
-             $conn=mysqli_connect($db_server,$db_user,$db_pass,$db_name);
-    
-        $username = mysqli_real_escape_string($conn, $_POST["username"]);
-        $password = $_POST["password"];
-        $pass = password_hash($password, PASSWORD_DEFAULT);
-
-        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$pass')";
-
-        mysqli_query($conn,$sql);
-        echo '<div class="message">Registered successfully!!!</div>'; 
-        header("refresh:2; url=/APEXPLANET/loginpage.php");
-        }catch(mysqli_sql_exception){
-            echo '<div class="error">Username is Already taken!!!</div>';
-        }
+        echo '<div class="error">Access Denied! Invalid Admin Credentials.</div>';
     }
 }
 ?>
-       
-                    
-   

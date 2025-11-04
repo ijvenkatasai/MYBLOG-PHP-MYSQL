@@ -12,8 +12,8 @@ $success_message = "";
 
 if (isset($_GET["id"])) {
     $post_id = mysqli_real_escape_string($conn, $_GET["id"]);
-    $user_id = mysqli_real_escape_string($conn, $_SESSION["username"]);
-    $sql = "SELECT * FROM posts WHERE id = '$post_id' AND user_id = '$user_id'";
+   
+    $sql = "SELECT * FROM posts WHERE id = '$post_id'";
     $res = mysqli_query($conn, $sql);
     if (mysqli_num_rows($res) > 0) {
         $row = mysqli_fetch_assoc($res);
@@ -30,7 +30,7 @@ if (isset($_POST["update"])) {
     $content = mysqli_real_escape_string($conn, $_POST["newcontent"]);
     $user_id = mysqli_real_escape_string($conn, $_SESSION["username"]);
 
-    $sql = "SELECT * FROM posts WHERE id = '$id' AND user_id = '$user_id'";
+    $sql = "SELECT * FROM posts WHERE id = '$id'";
     $res = mysqli_query($conn, $sql);
     if (mysqli_num_rows($res) > 0) {
         if (!empty($title)) {
@@ -39,21 +39,21 @@ if (isset($_POST["update"])) {
             if (mysqli_num_rows($check_res) > 0) {
                 $error_message = "Title already taken! Title not updated.";
             } else {
-                $sql = "UPDATE posts SET title = '$title' WHERE id = '$id' AND user_id = '$user_id'";
+                $sql = "UPDATE posts SET title = '$title' WHERE id = '$id'";
                 mysqli_query($conn, $sql);
-                $success_message .= "Title";
+                $success_message .= "Title updated!<br>";
             }
         }
 
         if (!empty($content)) {
-            $sql = "UPDATE posts SET content = '$content' WHERE id = '$id' AND user_id = '$user_id'";
+            $sql = "UPDATE posts SET content = '$content' WHERE id = '$id'";
             mysqli_query($conn, $sql);
-            $success_message .= "/Content updated!!!<br>";
+            $success_message .= "Content updated!<br>";
         }
     } else {
         $error_message = "Post not found or access denied!";
     }
-    header("refresh:2; url=myblog.php?filter=user");
+    header("refresh:2; url=/APEXPLANET/adminhome.php?filter=user");
     mysqli_close($conn);
 }
 ?>
@@ -136,17 +136,17 @@ if (isset($_POST["update"])) {
     </style>
 </head>
 <body>
-   <div style="background-color: #1f1f1f; padding: 40px 20px; text-align: center; border-bottom: 1px solid #444; box-shadow: 0 2px 10px rgba(0,0,0,0.4);">
+    <div style="background-color: #1f1f1f; padding: 40px 20px; text-align: center; border-bottom: 1px solid #444; box-shadow: 0 2px 10px rgba(0,0,0,0.4);">
   <h1 style="color: #F2BFA4; font-size: 3rem; letter-spacing: 2px; margin: 0;">MY BLOG</h1>
 </div>
-    <h2>EDIT POST</h2>
+    <h2>ADMIN EDIT</h2>
     <div class="back-button">
-        <a href="myblog.php?filter=user"><button>Back</button></a>
+        <a href="adminhome.php?filter=user"><button>Back</button></a>
     </div>
 
     <div class="container">
         <?php if (!empty($existing_title) || !empty($existing_content)) { ?>
-        <form method="POST" action="edit_post.php">
+        <form method="POST" action="admin_edit.php">
             <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($post_id); ?>">
 
             <label for="newtitle">New Post Title:</label>
@@ -158,6 +158,7 @@ if (isset($_POST["update"])) {
             <div class="submit-button">
                 <input type="submit" name="update" value="Update">
             </div>
+            <p class="note">Leave fields empty if you don't want to change them.</p>
         </form>
         <?php } ?>
         <?php if (!empty($success_message)) { echo '<div class="message">' . $success_message . '</div>'; } ?>
