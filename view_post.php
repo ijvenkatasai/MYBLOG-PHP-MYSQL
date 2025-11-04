@@ -15,7 +15,10 @@ session_start();
       color: #f0f0f0;
       margin: 0;
       padding: 0;
+<<<<<<< HEAD
 
+=======
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
     }
 
     h1, h2 {

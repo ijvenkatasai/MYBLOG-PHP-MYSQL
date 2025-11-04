@@ -75,6 +75,7 @@ session_start();
       margin: 80px auto 20px;
       max-width: 600px;
     }
+<<<<<<< HEAD
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -88,6 +89,12 @@ session_start();
 <div style="background-color: #1f1f1f; padding: 40px 20px; text-align: center; border-bottom: 1px solid #444; box-shadow: 0 2px 10px rgba(0,0,0,0.4);">
   <h1 style="color: #F2BFA4; font-size: 3rem; letter-spacing: 2px; margin: 0;">MY BLOG</h1>
 </div>
+=======
+  </style>
+</head>
+<body>
+  <h1>MY BLOG</h1>
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
 
   
 
@@ -98,6 +105,7 @@ session_start();
   <div class="container-wrapper">
     <div class="admin-container">
       <h4>Login as Administrator</h4>
+<<<<<<< HEAD
       <a href="/APEXPLANET/admin.php"><button class="btn btn-admin">LOGIN</button></a>
     </div>
     <div class="user-container">
@@ -114,3 +122,14 @@ session_start();
   </footer>
 </body>
 </html>
+=======
+      <a href="admin.php"><button class="btn btn-admin">LOGIN</button></a>
+    </div>
+    <div class="user-container">
+      <h4>Login as User</h4>
+      <a href="loginpage.php"><button class="btn btn-user">LOGIN</button></a>
+    </div>
+  </div>
+</body>
+</html>
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053

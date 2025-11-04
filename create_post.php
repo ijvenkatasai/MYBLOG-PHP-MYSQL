@@ -97,10 +97,15 @@ session_start();
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <div style="background-color: #1f1f1f; padding: 40px 20px; text-align: center; border-bottom: 1px solid #444; box-shadow: 0 2px 10px rgba(0,0,0,0.4);">
   <h1 style="color: #F2BFA4; font-size: 3rem; letter-spacing: 2px; margin: 0;">MY BLOG</h1>
 </div>
     <h2>NEW POST</h2>
+=======
+    <h1>MY BLOG</h1>
+    <h2>CREATE POST</h2>
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
     <a href="myblog.php"><button>Back</button></a>
     <div class="container">
         <form action="create_post.php" method="POST">

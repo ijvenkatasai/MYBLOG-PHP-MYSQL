@@ -102,9 +102,13 @@ session_start();
 
 
 <body>
+<<<<<<< HEAD
  <div style="background-color: #1f1f1f; padding: 40px 20px; text-align: center; border-bottom: 1px solid #444; box-shadow: 0 2px 10px rgba(0,0,0,0.4);">
   <h1 style="color: #F2BFA4; font-size: 3rem; letter-spacing: 2px; margin: 0;">MY BLOG</h1>
 </div>
+=======
+  <h1>MY BLOG</h1>
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
   <div style="text-align: center; margin-top: 10px;">
     <a href="index.php">HOME</a>
   </div>
@@ -118,7 +122,11 @@ session_start();
       <input type="password" name="password"><br>
     <div class="center-wrapper">
   <input type="submit" name="login" value="Login"><br>
+<<<<<<< HEAD
   <span>New user?</span> <a href="/APEXPLANET/register.php">Register</a>
+=======
+  <span>New user?</span> <a href="register.php">Register</a>
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
 </div>
     </form>
   </div>
@@ -142,7 +150,11 @@ if (isset($_POST["login"])) {
                 echo '<div class="message">Login successful!!!!!!!</div>';
                 $_SESSION["username"] = $user;
                 $_SESSION["role"] = "user";
+<<<<<<< HEAD
                 header("refresh:2; url=/APEXPLANET/myblog.php");
+=======
+                header("refresh:2; url=myblog.php");
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
             } else {
                 echo '<div class="error">Incorrect Password!!!</div>';
             }
@@ -152,3 +164,4 @@ if (isset($_POST["login"])) {
     }
 }
 ?>
+

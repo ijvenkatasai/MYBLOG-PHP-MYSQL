@@ -102,6 +102,7 @@ session_start();
   </style>
 </head>
 <body>
+<<<<<<< HEAD
   <div style="background-color: #1f1f1f; padding: 40px 20px; text-align: center; border-bottom: 1px solid #444; box-shadow: 0 2px 10px rgba(0,0,0,0.4);">
   <h1 style="color: #F2BFA4; font-size: 3rem; letter-spacing: 2px; margin: 0;">MY BLOG</h1>
 </div>
@@ -132,6 +133,28 @@ session_start();
   <input type="submit" name="submit" value="Submit">
 
 </div>
+=======
+  <h1>MY BLOG</h1>
+  <div style="text-align: center; margin-top: 10px;">
+    <a href="index.php">HOME</a>
+  </div>
+
+  <div class="form-container">
+    <h2>REGISTER</h2>
+    <form action="register.php" method="post">
+      <label>USERNAME:</label>
+      <input type="text" name="username">
+
+      <label>CREATE PASSWORD:</label>
+      <input type="password" name="password">
+
+      <label>CONFIRM PASSWORD:</label>
+      <input type="password" name="confirmpassword">
+
+      <div class="submit-wrapper">
+  <input type="submit" name="submit" value="Submit">
+</div>
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
 
     </form>
   </div>
@@ -155,13 +178,20 @@ if (isset($_POST["submit"])) {
 
         mysqli_query($conn,$sql);
         echo '<div class="message">Registered successfully!!!</div>'; 
+<<<<<<< HEAD
         header("refresh:2; url=/APEXPLANET/loginpage.php");
+=======
+        header("refresh:2; url=loginpage.php");
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
         }catch(mysqli_sql_exception){
             echo '<div class="error">Username is Already taken!!!</div>';
         }
     }
 }
 ?>
+<<<<<<< HEAD
        
                     
    
+=======
+>>>>>>> d7e8896ea5528c4d4e4fc9411ca22b3be2921053
